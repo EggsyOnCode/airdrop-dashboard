@@ -5,6 +5,7 @@ interface AddressEntry {
   address: string;
   selected: boolean;
   amount: number;
+  txHash: string | undefined;
 }
 
 interface AirdropState {
@@ -26,11 +27,19 @@ const airdropSlice = createSlice({
       const address = state.addresses[action.payload];
       address.selected = !address.selected;
     },
-    setAddressAmount: (
+    setAddressAmount(
       state,
-      action: PayloadAction<{ index: number; amount: number }>
-    ) => {
-      state.addresses[action.payload.index].amount = action.payload.amount;
+      action: PayloadAction<{
+        index: number;
+        amount: number;
+        txHash?: string; // Optional, for updating transaction hash
+      }>
+    ) {
+      const { index, amount, txHash } = action.payload;
+      state.addresses[index].amount = amount;
+      if (txHash) {
+        state.addresses[index].txHash = txHash; // Update txHash if provided
+      }
     },
   },
 });
