@@ -2,6 +2,12 @@
 
 Airdrop dashboard is a GUI app for airdroping any kind of tokens, native gas tokens (ETH, MATIC, VANRY) , ERC-20 , NFTs to a list of addresses imported directly from Excel. The UI allows you to select, deselect, manually change the amt for particular addresse, set a global airdrop amt etc
 
+# How to Run it
+
+- git clone this repo
+- `npm install`
+- `npm run dev`
+
 # How to use
 
 - On the config page, set the Json RPC url and the funder's wallet address
